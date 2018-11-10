@@ -1,8 +1,7 @@
 """
 Classic recursive Fibonacci
 """
-
-import argparse
+import sys
 
 
 def fib(n):
@@ -12,11 +11,9 @@ def fib(n):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("n", type=int)
-    args = parser.parse_args()
+    n = int(sys.argv[1])
 
-    print(fib(args.n))
+    print(fib(n))
 
 
 if __name__ == "__main__":

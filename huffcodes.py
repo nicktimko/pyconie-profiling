@@ -25,21 +25,16 @@ def generate_codes(text, verbose=False):
 
     codebook = huffman.codebook(word_counts.items())
 
-    shortest_codes = heapq.nsmallest(15, codebook.items(), key=lambda c: len(c[1]))
+    return {w: {"word": w, "count": word_counts[w], "code": codebook[w]} for w in word_counts}
 
-    # reporting
-    if not verbose:
-        return
 
-    print(f'{"count":>10s} | {"word"}')
-    print('-' * 20)
-    for word, count in word_counts.most_common(15):
-        print(f'{count:>10d} | {word}')
+def report(codes, n=10):
+    most_common = heapq.nlargest(n, codes.values(), key=lambda c: c["count"])
 
-    print(f'\n{"code":>10s} | {"word"}')
-    print('-' * 20)
-    for word, code in shortest_codes:
-        print(f'{code:>10s} | {word}')
+    print(f'{"word":>10s} | {"count":>6s} | {"code":>10s}')
+    print('-' * 40)
+    for info in most_common:
+        print(f'{info["word"]:>10s} | {info["count"]:>6d} | {info["code"]:>10s}')
 
 
 def main(argv=None):
@@ -47,14 +42,16 @@ def main(argv=None):
        argv = sys.argv[1:]
 
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("-v", "--verbose", action="store_true")
+    # parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("corpus")
     args = parser.parse_args(argv)
 
     with open(args.corpus) as f:
         text = f.read()
 
-    generate_codes(text, verbose=args.verbose)
+    codes = generate_codes(text, verbose=True)
+
+    report(codes)
 
 
 if __name__ == "__main__":
