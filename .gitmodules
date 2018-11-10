@@ -1,0 +1,12 @@
+[submodule "huffman"]
+	path = subrepos/huffman
+	url = git@github.com:nicktimko/huffman.git
+[submodule "diffexpy"]
+	path = subrepos/diffexpy
+	url = git@github.com:justinfinkle/diffexpy.git
+[submodule "multiworm"]
+	path = subrepos/multiworm
+	url = git@github.com:nicktimko/multiworm.git
+[submodule "waldo"]
+	path = subrepos/waldo
+	url = git@github.com:amarallab/waldo.git
