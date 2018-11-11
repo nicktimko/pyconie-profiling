@@ -25,7 +25,9 @@ async def main(argv=None):
         async with session.get(args.corpus) as response:
             text = await response.text()
 
-    huffcodes.generate_codes(text, verbose=args.verbose)
+    codes = huffcodes.generate_codes(text, verbose=args.verbose)
+
+    huffcodes.report(codes)
 
 
 if __name__ == "__main__":

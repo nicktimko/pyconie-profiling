@@ -2,8 +2,8 @@
 	path = subrepos/huffman
 	url = git@github.com:nicktimko/huffman.git
 [submodule "diffexpy"]
-	path = subrepos/diffexpy
-	url = git@github.com:justinfinkle/diffexpy.git
+	path = diffexpy
+	url = git@github.com:nicktimko/diffexpy.git
 [submodule "multiworm"]
 	path = subrepos/multiworm
 	url = git@github.com:nicktimko/multiworm.git
